@@ -52,6 +52,7 @@ class CreateCertificatePlugin {
         this.acm = new this.serverless.providers.aws.sdk.ACM(acmCredentials);
         this.idempotencyToken = this.serverless.service.custom.customCertificate.idempotencyToken;
         this.writeCertInfoToFile = this.serverless.service.custom.customCertificate.writeCertInfoToFile || false;
+        this.rewriteRecords = this.serverless.service.custom.customCertificate.rewriteRecords || false;
         this.certInfoFileName = this.serverless.service.custom.customCertificate.certInfoFileName || 'cert-info.yml';
         this.subjectAlternativeNames = this.serverless.service.custom.customCertificate.subjectAlternativeNames || [];
         this.tags = this.serverless.service.custom.customCertificate.tags || {};
