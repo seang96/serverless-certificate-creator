@@ -271,7 +271,7 @@ class CreateCertificatePlugin {
       return Promise.all(hostedZoneIds.map(({ hostedZoneId, Name }) => {
         let changes = certificate.Certificate.DomainValidationOptions.filter(({DomainName}) => DomainName.endsWith(Name)).map((x) => {
           return {
-            Action: "CREATE",
+            Action: this.rewriteRecords ? "UPSERT" : "CREATE",
             ResourceRecordSet: {
               Name: x.ResourceRecord.Name,
               ResourceRecords: [
